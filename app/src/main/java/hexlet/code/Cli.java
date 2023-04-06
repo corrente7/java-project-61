@@ -9,7 +9,7 @@ public class Cli {
         name = scan.nextLine();
         System.out.println("Hello, " + name + "!");
     }
-    public String getName() {
+    public String getName(){
         return name;
     }
 }
