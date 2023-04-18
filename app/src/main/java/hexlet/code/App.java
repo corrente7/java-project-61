@@ -15,6 +15,9 @@ public class App {
         System.out.println("0 - Exit");
         Scanner scan = new Scanner(System.in);
         int number = scan.nextInt();
+        if (number == 0) {
+            System.exit(0);
+        }
         if (number == 1) {
             System.out.println("Welcome to the Brain Games!");
             Cli.getUserName();
