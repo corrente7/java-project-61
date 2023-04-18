@@ -1,10 +1,10 @@
 package hexlet.code.games;
-import hexlet.code.*;
+import hexlet.code.Engine;
 
 public class GCD {
     public static void gcdGame() {
         int count = 0;
-        while (count < 3) {
+        while (count < Engine.getTryAnswer()) {
             System.out.println("Find the greatest common divisor of given numbers.");
             int random1 = Engine.randomInt();
             int random2 = Engine.randomInt();
@@ -13,16 +13,16 @@ public class GCD {
 
             int nod = greatestCommonDivisor(random1, random2);
 
-            if (Integer.parseInt(Engine.answer) == nod) {
+            if (Integer.parseInt(Engine.getAnswer()) == nod) {
                 Engine.correct();
                 count++;
             } else {
-                System.out.println(Engine.answer + " is wrong answer. Correct answer was " + nod);
+                System.out.println(Engine.getAnswer() + " is wrong answer. Correct answer was " + nod);
                 Engine.tryAgain();
                 break;
             }
 
-            if (count == 3) {
+            if (count == Engine.getTryAnswer()) {
                 Engine.congratulations();
             }
         }

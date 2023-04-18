@@ -1,11 +1,11 @@
 package hexlet.code.games;
-import hexlet.code.*;
+import hexlet.code.Engine;
 
 
 public class Progression {
     public static void progressionGame() {
         int count = 0;
-        while (count < 3) {
+        while (count < Engine.getTryAnswer()) {
             System.out.println("What number is missing in the progression?");
             int random1 = Engine.randomInt();
             int random2 = Engine.randomInt();
@@ -24,16 +24,16 @@ public class Progression {
             System.out.println("Question: " + result);
             Engine.readAnswer();
 
-            if (Integer.parseInt(Engine.answer) == x) {
+            if (Integer.parseInt(Engine.getAnswer()) == x) {
                 Engine.correct();
                 count++;
             } else {
-                System.out.println(Engine.answer + " is wrong answer. Correct answer was " + x);
+                System.out.println(Engine.getAnswer() + " is wrong answer. Correct answer was " + x);
                 Engine.tryAgain();
                 break;
             }
 
-            if (count == 3) {
+            if (count == Engine.getTryAnswer()) {
                 Engine.congratulations();
             }
         }

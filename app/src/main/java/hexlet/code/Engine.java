@@ -2,10 +2,10 @@ package hexlet.code;
 import java.util.Scanner;
 
 public class Engine {
-    public static String answer;
-    public static String username = Cli.name;
-    public static Scanner scan = new Scanner(System.in);
-
+    private static String answer;
+    private static String username = Cli.getName();
+    private static Scanner scan = new Scanner(System.in);
+    private static int tryCount = 3;
 
     public static void readAnswer() {
         answer = scan.nextLine();
@@ -24,4 +24,17 @@ public class Engine {
     public static int randomInt() {
         return (int) ((Math.random() * (120 - 1)) + 1);
     }
+
+    public static String getAnswer() {
+        return answer;
+    }
+    public static int getTryAnswer() {
+        return tryCount;
+    }
+
+    public static Scanner getScan() {
+        return scan;
+    }
+
+
 }
