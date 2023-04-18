@@ -13,25 +13,26 @@ public class Calc {
             char mathOperation = mathOperation();
             System.out.println("Question: " + random1 + " " + mathOperation + " " + random2);
             Engine.readAnswer();
+            Integer userAnswer = Integer.parseInt(Engine.getAnswer());
 
-            if (mathOperation == '+' & Integer.parseInt(Engine.getAnswer()) == random1 + random2) {
+            if (mathOperation == '+' & userAnswer == random1 + random2) {
                 Engine.correct();
                 count++;
-            } else if (mathOperation == '-' & Integer.parseInt(Engine.getAnswer()) == random1 - random2) {
+            } else if (mathOperation == '-' & userAnswer == random1 - random2) {
                 Engine.correct();
                 count++;
-            } else if (mathOperation == '*' & Integer.parseInt(Engine.getAnswer()) == random1 * random2) {
+            } else if (mathOperation == '*' & userAnswer == random1 * random2) {
                 Engine.correct();
                 count++;
-            } else if (mathOperation == '+' & Integer.parseInt(Engine.getAnswer()) != random1 + random2) {
+            } else if (mathOperation == '+' & userAnswer != random1 + random2) {
                 System.out.println(Engine.getAnswer() + " is wrong answer ;(. Correct answer was " + (random1 + random2));
                 Engine.tryAgain();
                 break;
-            } else if (mathOperation == '-' & Integer.parseInt(Engine.getAnswer()) != random1 - random2) {
+            } else if (mathOperation == '-' & userAnswer != random1 - random2) {
                 System.out.println(Engine.getAnswer() + " is wrong answer ;(. Correct answer was " + (random1 - random2));
                 Engine.tryAgain();
                 break;
-            } else if (mathOperation == '*' & Integer.parseInt(Engine.getAnswer()) != random1 + random2) {
+            } else if (mathOperation == '*' & userAnswer != random1 + random2) {
                 System.out.println(Engine.getAnswer() + " is wrong answer ;(. Correct answer was " + (random1 * random2));
                 Engine.tryAgain();
                 break;
