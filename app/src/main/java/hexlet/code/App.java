@@ -21,7 +21,6 @@ public class App {
         if (number == 1) {
             System.out.println("Welcome to the Brain Games!");
             Cli.getUserName();
-            Even.evenGame();
         }
         if (number == 2) {
             System.out.println("Welcome to the Brain Games!");
