@@ -2,41 +2,28 @@ package hexlet.code.games;
 import hexlet.code.Engine;
 
 public class Even {
-
+    public static String evenRule = "Answer 'yes' if the number is even, otherwise answer 'no'.";
     public static void evenGame() {
-        int count = 0;
-        while (count < Engine.getTryAnswer()) {
-            System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
+        Engine.runGame(createEvenArray(), evenRule);
+    }
+    public static String[][] createEvenArray() {
+        String[][] evenArray = new String[Engine.getTryAnswer()][2];
+        for (int i = 0; i < evenArray.length; i++) {
             int random = Engine.randomInt();
-            System.out.println("Question: " + random);
-            Engine.readAnswer();
+            evenArray[i][0] = String.valueOf(random);
+            evenArray[i][1] = evenCheck(random);
+        }
+        return evenArray;
+    }
 
-            if (isEven(random) == true & Engine.getAnswer().equals("yes")) {
-                Engine.correct();
-                count++;
-            } else if (isEven(random) == false & Engine.getAnswer().equals("no")) {
-                Engine.correct();
-                count++;
-            } else if (isEven(random) == true & Engine.getAnswer().equals("no")) {
-                System.out.println("'no' is wrong answer. Correct answer was 'yes'.");
-                Engine.tryAgain();
-                break;
-            } else if (isEven(random) == false & Engine.getAnswer().equals("yes")) {
-                System.out.println("'yes' is wrong answer. Correct answer was 'no'.");
-                Engine.tryAgain();
-                break;
-            } else {
-                System.out.println(Engine.getAnswer() + " is wrong answer.");
-                Engine.tryAgain();
-                break;
-            }
-
-            if (count == Engine.getTryAnswer()) {
-                Engine.congratulations();
-            }
+    public static String evenCheck(int number) {
+        if (isEven(number) == true) {
+            return "yes";
+        } else {
+            return "no";
         }
     }
-    static boolean isEven(int a) {
+    public static boolean isEven(int a) {
         return (a % 2 == 0);
     }
 }

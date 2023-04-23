@@ -3,50 +3,31 @@ import hexlet.code.Engine;
 import java.util.Random;
 
 public class Calc {
+    public static String calcRule = "What is the result of the expression?";
 
     public static void calcGame() {
-        int count = 0;
-        while (count < Engine.getTryAnswer()) {
-            System.out.println("What is the result of the expression?");
+        Engine.runGame(createCalcArray(), calcRule);
+    }
+    public static String[][] createCalcArray() {
+        String[][] calcArray = new String[Engine.getTryAnswer()][2];
+        for (int i = 0; i < calcArray.length; i++) {
             int random1 = Engine.randomInt();
             int random2 = Engine.randomInt();
             char mathOperation = mathOperation();
-            System.out.println("Question: " + random1 + " " + mathOperation + " " + random2);
-            Engine.readAnswer();
-            Integer userAnswer = Integer.parseInt(Engine.getAnswer());
-
-            if (mathOperation == '+' & userAnswer == random1 + random2) {
-                Engine.correct();
-                count++;
-            } else if (mathOperation == '-' & userAnswer == random1 - random2) {
-                Engine.correct();
-                count++;
-            } else if (mathOperation == '*' & userAnswer == random1 * random2) {
-                Engine.correct();
-                count++;
-            } else if (mathOperation == '+' & userAnswer != random1 + random2) {
-                System.out.println(Engine.getAnswer() + " is wrong answer ;(. Correct answer was " + (random1 + random2));
-                Engine.tryAgain();
-                break;
-            } else if (mathOperation == '-' & userAnswer != random1 - random2) {
-                System.out.println(Engine.getAnswer() + " is wrong answer ;(. Correct answer was " + (random1 - random2));
-                Engine.tryAgain();
-                break;
-            } else if (mathOperation == '*' & userAnswer != random1 + random2) {
-                System.out.println(Engine.getAnswer() + " is wrong answer ;(. Correct answer was " + (random1 * random2));
-                Engine.tryAgain();
-                break;
-            } else {
-                System.out.println(Engine.getAnswer() + " is wrong answer.");
-                Engine.tryAgain();
-                break;
-            }
-
-            if (count == Engine.getTryAnswer()) {
-                Engine.congratulations();
-            }
+            calcArray[i][0] = random1 + " " + mathOperation + " " + random2;
+            calcArray[i][1] = String.valueOf(calcCheck(random1, random2, mathOperation));
         }
+        return calcArray;
     }
+   public static int calcCheck(int number1, int number2, char operator) {
+       if (operator == '+') {
+           return number1 + number2;
+       } if (operator == '-') {
+           return number1 - number2;
+       } else {
+           return number1 * number2;
+       }
+   }
     public static char mathOperation() {
         String operation = "+-*";
         Random r = new Random();

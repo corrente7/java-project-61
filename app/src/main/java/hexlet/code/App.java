@@ -22,32 +22,26 @@ public class App {
             System.exit(0);
         }
         if (number == 1) {
-            System.out.println("Welcome to the Brain Games!");
-            Cli.getUserName();
+            Engine.greetUser();
         }
         if (number == 2) {
-            System.out.println("Welcome to the Brain Games!");
-            Cli.getUserName();
+            Engine.greetUser();
             Even.evenGame();
         }
         if (number == 3) {
-            System.out.println("Welcome to the Brain Games!");
-            Cli.getUserName();
+            Engine.greetUser();
             Calc.calcGame();
         }
         if (number == 4) {
-            System.out.println("Welcome to the Brain Games!");
-            Cli.getUserName();
-            GCD.gcdGame();
+            Engine.greetUser();
+            GCD.GSDGame();
         }
         if (number == 5) {
-            System.out.println("Welcome to the Brain Games!");
-            Cli.getUserName();
+            Engine.greetUser();
             Progression.progressionGame();
         }
         if (number == 6) {
-            System.out.println("Welcome to the Brain Games!");
-            Cli.getUserName();
+            Engine.greetUser();
             Prime.primeGame();
         }
     }

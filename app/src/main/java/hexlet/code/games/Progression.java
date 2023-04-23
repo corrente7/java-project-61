@@ -3,14 +3,19 @@ import hexlet.code.Engine;
 
 
 public class Progression {
+
+    public static String progressionRule = "What number is missing in the progression?";
     public static void progressionGame() {
-        int count = 0;
-        while (count < Engine.getTryAnswer()) {
-            System.out.println("What number is missing in the progression?");
+        Engine.runGame(createProgressionArray(), progressionRule);
+    }
+    public static String[][] createProgressionArray() {
+        String[][] progressionArray = new String[Engine.getTryAnswer()][2];
+        for (int i = 0; i < progressionArray.length; i++) {
             int random1 = Engine.randomInt();
             int random2 = Engine.randomInt();
+            int progressionLength = 10;
             int[] progression = createProgression(random1, random2);
-            int randomNumber = 0 + (int) (Math.random() * 10);
+            int randomNumber = 0 + (int) (Math.random() * progressionLength);
             int x = progression[randomNumber];
             var result = new StringBuilder();
             for (int num : progression) {
@@ -21,22 +26,11 @@ public class Progression {
                     result.append(" ");
                 }
             }
-            System.out.println("Question: " + result);
-            Engine.readAnswer();
-
-            if (Integer.parseInt(Engine.getAnswer()) == x) {
-                Engine.correct();
-                count++;
-            } else {
-                System.out.println(Engine.getAnswer() + " is wrong answer. Correct answer was " + x);
-                Engine.tryAgain();
-                break;
-            }
-
-            if (count == Engine.getTryAnswer()) {
-                Engine.congratulations();
-            }
+            String str = result.toString();
+            progressionArray[i][0] = str;
+            progressionArray[i][1] = String.valueOf(x);
         }
+        return progressionArray;
     }
     public static int[] createProgression(int a1, int d) {
         int[] array = new int[10];

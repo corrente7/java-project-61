@@ -2,41 +2,30 @@ package hexlet.code.games;
 import hexlet.code.Engine;
 
 public class Prime {
+
+    public static String primeRule = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
     public static void primeGame() {
-        int count = 0;
-        while (count < Engine.getTryAnswer()) {
-            System.out.println("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
+        Engine.runGame(createPrimeArray(), primeRule);
+    }
+    public static String[][] createPrimeArray() {
+        String[][] primeArray = new String[Engine.getTryAnswer()][2];
+        for (int i = 0; i < primeArray.length; i++) {
             int random = Engine.randomInt();
-            System.out.println("Question: " + random);
-            Engine.readAnswer();
+            primeArray[i][0] = String.valueOf(random);
+            primeArray[i][1] = primeCheck(random);
+        }
+        return primeArray;
+    }
 
-            if (isSimple(random) == true & Engine.getAnswer().equals("yes")) {
-                Engine.correct();
-                count++;
-            } else if (isSimple(random) == false & Engine.getAnswer().equals("no")) {
-                Engine.correct();
-                count++;
-            } else if (isSimple(random) == true & Engine.getAnswer().equals("no")) {
-                System.out.println("'no' is wrong answer ;(. Correct answer was 'yes'.");
-                Engine.tryAgain();
-                break;
-            } else if (isSimple(random) == false & Engine.getAnswer().equals("yes")) {
-                System.out.println("'yes' is wrong answer ;(. Correct answer was 'no'.");
-                Engine.tryAgain();
-                break;
-            } else {
-                System.out.println(Engine.getAnswer() + "is wrong answer.");
-                Engine.tryAgain();
-                break;
-            }
-
-            if (count == Engine.getTryAnswer()) {
-                Engine.congratulations();
-            }
+    public static String primeCheck(int number) {
+        if (isSimple(number) == true) {
+            return "yes";
+        } else {
+            return "no";
         }
     }
 
-    public static boolean isSimple(Integer number) {
+    public static boolean isSimple(int number) {
         if (number < 2) {
             return false;
         }
@@ -46,7 +35,6 @@ public class Prime {
             }
         }
         return true;
-
     }
 
 }
