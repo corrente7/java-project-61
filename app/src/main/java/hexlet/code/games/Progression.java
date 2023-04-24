@@ -6,6 +6,7 @@ import hexlet.code.Utils;
 public class Progression {
 
     private static String progressionRule = "What number is missing in the progression?";
+    private static final int PROGRESSIONLENGTH = 10;
     public static void progressionGame() {
         Engine.runGame(createProgressionArray(), progressionRule);
     }
@@ -34,10 +35,9 @@ public class Progression {
         return progressionArray;
     }
     public static int[] createProgression(int a1, int d) {
-        int progressionLength = 10;
-        int[] array = new int[progressionLength];
+        int[] array = new int[PROGRESSIONLENGTH];
         array[0] = a1;
-        for (int i = 2; i < progressionLength + 1; i++) {
+        for (int i = 2; i < PROGRESSIONLENGTH + 1; i++) {
             array[i - 1] = a1 + d * (i - 1);
         }
         return array;
