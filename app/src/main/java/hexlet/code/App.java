@@ -18,31 +18,30 @@ public class App {
         System.out.println("0 - Exit");
         Scanner scan = new Scanner(System.in);
         int number = scan.nextInt();
-        if (number == 0) {
-            System.exit(0);
-        }
-        if (number == 1) {
-            Engine.greetUser();
-        }
-        if (number == 2) {
-            Engine.greetUser();
-            Even.evenGame();
-        }
-        if (number == 3) {
-            Engine.greetUser();
-            Calc.calcGame();
-        }
-        if (number == 4) {
-            Engine.greetUser();
-            GCD.GSDGame();
-        }
-        if (number == 5) {
-            Engine.greetUser();
-            Progression.progressionGame();
-        }
-        if (number == 6) {
-            Engine.greetUser();
-            Prime.primeGame();
+        switch (number) {
+            case 0:
+                System.exit(0);
+                break;
+            case 1:
+                Cli.getUserName();
+                break;
+            case 2:
+                Even.evenGame();
+                break;
+            case 3:
+                Calc.calcGame();
+                break;
+            case 4:
+                GCD.gsdGame();
+                break;
+            case 5:
+                Progression.progressionGame();
+                break;
+            case 6:
+                Prime.primeGame();
+                break;
+            default:
+                break;
         }
     }
 }

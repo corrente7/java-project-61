@@ -1,33 +1,35 @@
 package hexlet.code.games;
 import hexlet.code.Engine;
+import hexlet.code.Utils;
 import java.util.Random;
 
 public class Calc {
-    public static String calcRule = "What is the result of the expression?";
+    private static String calcRule = "What is the result of the expression?";
 
     public static void calcGame() {
         Engine.runGame(createCalcArray(), calcRule);
     }
     public static String[][] createCalcArray() {
-        String[][] calcArray = new String[Engine.getTryAnswer()][2];
+        String[][] calcArray = new String[Engine.TRYCOUNT][2];
         for (int i = 0; i < calcArray.length; i++) {
-            int random1 = Engine.randomInt();
-            int random2 = Engine.randomInt();
+            int random1 = Utils.randomInt();
+            int random2 = Utils.randomInt();
             char mathOperation = mathOperation();
             calcArray[i][0] = random1 + " " + mathOperation + " " + random2;
             calcArray[i][1] = String.valueOf(calcCheck(random1, random2, mathOperation));
         }
         return calcArray;
     }
-   public static int calcCheck(int number1, int number2, char operator) {
-       if (operator == '+') {
-           return number1 + number2;
-       } if (operator == '-') {
-           return number1 - number2;
-       } else {
-           return number1 * number2;
-       }
-   }
+    public static int calcCheck(int number1, int number2, char operator) {
+        if (operator == '+') {
+            return number1 + number2;
+        }
+        if (operator == '-') {
+            return number1 - number2;
+        } else {
+            return number1 * number2;
+        }
+    }
     public static char mathOperation() {
         String operation = "+-*";
         Random r = new Random();

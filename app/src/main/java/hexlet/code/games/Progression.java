@@ -1,18 +1,19 @@
 package hexlet.code.games;
 import hexlet.code.Engine;
+import hexlet.code.Utils;
 
 
 public class Progression {
 
-    public static String progressionRule = "What number is missing in the progression?";
+    private static String progressionRule = "What number is missing in the progression?";
     public static void progressionGame() {
         Engine.runGame(createProgressionArray(), progressionRule);
     }
     public static String[][] createProgressionArray() {
-        String[][] progressionArray = new String[Engine.getTryAnswer()][2];
+        String[][] progressionArray = new String[Engine.TRYCOUNT][2];
         for (int i = 0; i < progressionArray.length; i++) {
-            int random1 = Engine.randomInt();
-            int random2 = Engine.randomInt();
+            int random1 = Utils.randomInt();
+            int random2 = Utils.randomInt();
             int progressionLength = 10;
             int[] progression = createProgression(random1, random2);
             int randomNumber = 0 + (int) (Math.random() * progressionLength);
@@ -33,9 +34,10 @@ public class Progression {
         return progressionArray;
     }
     public static int[] createProgression(int a1, int d) {
-        int[] array = new int[10];
+        int progressionLength = 10;
+        int[] array = new int[progressionLength];
         array[0] = a1;
-        for (int i = 2; i < 11; i++) {
+        for (int i = 2; i < progressionLength + 1; i++) {
             array[i - 1] = a1 + d * (i - 1);
         }
         return array;
