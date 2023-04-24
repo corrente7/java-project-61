@@ -15,9 +15,8 @@ public class Progression {
         for (int i = 0; i < progressionArray.length; i++) {
             int random1 = Utils.randomInt();
             int random2 = Utils.randomInt();
-            int progressionLength = 10;
             int[] progression = createProgression(random1, random2);
-            int randomNumber = 0 + (int) (Math.random() * progressionLength);
+            int randomNumber = 0 + (int) (Math.random() * PROGRESSIONLENGTH);
             int x = progression[randomNumber];
             var result = new StringBuilder();
             for (int num : progression) {
