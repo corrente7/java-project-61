@@ -11,9 +11,9 @@ public class Engine {
         System.out.println("Hello, " + name + "!");
         System.out.println(rules);
         int count = 0;
-        while (count < Engine.TRYCOUNT) {
-            String question = gameArray[count][0];
-            String rightAnswer = gameArray[count][1];
+        for (String[] row : gameArray) {
+            String question = row[0];
+            String rightAnswer = row[1];
             System.out.println("Question: " + question);
             String answer = scan.nextLine();
             System.out.println("Your answer: " + answer);
