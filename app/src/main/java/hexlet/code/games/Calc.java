@@ -4,23 +4,24 @@ import hexlet.code.Utils;
 import java.util.Random;
 
 public class Calc {
-    private static String calcRule = "What is the result of the expression?";
+    public static final String CALC_RULE = "What is the result of the expression?";
 
-    public static void calcGame() {
-        Engine.runGame(createCalcArray(), calcRule);
+    public static void startCalcGame() {
+        Engine.runGame(createCalcArray(), CALC_RULE);
     }
     public static String[][] createCalcArray() {
-        String[][] calcArray = new String[Engine.TRYCOUNT][2];
+        String[][] calcArray = new String[Engine.ROUND_COUNT][2];
+        Random r = new Random();
         for (int i = 0; i < calcArray.length; i++) {
-            int random1 = Utils.randomInt();
-            int random2 = Utils.randomInt();
-            char mathOperation = mathOperation();
+            int random1 = Utils.generateRandomInt(Utils.RANGE);
+            int random2 = Utils.generateRandomInt(Utils.RANGE);
+            char mathOperation = generateMathOperation(r);
             calcArray[i][0] = random1 + " " + mathOperation + " " + random2;
-            calcArray[i][1] = String.valueOf(calcCheck(random1, random2, mathOperation));
+            calcArray[i][1] = String.valueOf(checkMathOperation(random1, random2, mathOperation));
         }
         return calcArray;
     }
-    public static int calcCheck(int number1, int number2, char operator) {
+    public static int checkMathOperation(int number1, int number2, char operator) {
         if (operator == '+') {
             return number1 + number2;
         }
@@ -30,9 +31,8 @@ public class Calc {
             return number1 * number2;
         }
     }
-    public static char mathOperation() {
+    public static char generateMathOperation(Random r) {
         String operation = "+-*";
-        Random r = new Random();
         char c = operation.charAt(r.nextInt(operation.length()));
         return c;
     }

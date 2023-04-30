@@ -1,8 +1,8 @@
 package hexlet.code;
 
 public class Utils {
-    private static final int RANGE = 120;
-    public static int randomInt() {
-        return (int) ((Math.random() * RANGE - 1) + 1);
+    public static final int RANGE = 120;
+    public static int generateRandomInt(int range) {
+        return (int) ((Math.random() * range - 1) + 1);
     }
 }

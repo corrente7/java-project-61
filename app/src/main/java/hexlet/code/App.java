@@ -6,6 +6,7 @@ import hexlet.code.games.Prime;
 import hexlet.code.games.Progression;
 import java.util.Scanner;
 
+
 public class App {
     private static final int EXIT = 0;
     private static final int GREET = 1;
@@ -27,25 +28,25 @@ public class App {
         int number = scan.nextInt();
         switch (number) {
             case EXIT:
-                System.exit(0);
+                System.out.println("Goodbye!");
                 break;
             case GREET:
                 Cli.getUserName();
                 break;
             case EVEN:
-                Even.evenGame();
+                Even.startEvenGame();
                 break;
             case CALC:
-                Calc.calcGame();
+                Calc.startCalcGame();
                 break;
             case GSD:
-                GCD.gsdGame();
+                GCD.startGsdGame();
                 break;
             case PROGRESSION:
-                Progression.progressionGame();
+                Progression.startProgressionGame();
                 break;
             case PRIME:
-                Prime.primeGame();
+                Prime.startPrimeGame();
                 break;
             default:
                 break;

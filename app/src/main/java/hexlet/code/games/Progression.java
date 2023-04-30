@@ -5,18 +5,18 @@ import hexlet.code.Utils;
 
 public class Progression {
 
-    private static String progressionRule = "What number is missing in the progression?";
-    private static final int PROGRESSIONLENGTH = 10;
-    public static void progressionGame() {
-        Engine.runGame(createProgressionArray(), progressionRule);
+    public static final String PROGRESSION_RULE = "What number is missing in the progression?";
+    private static final int PROGRESSION_LENGTH = 10;
+    public static void startProgressionGame() {
+        Engine.runGame(createProgressionArray(), PROGRESSION_RULE);
     }
     public static String[][] createProgressionArray() {
-        String[][] progressionArray = new String[Engine.TRYCOUNT][2];
+        String[][] progressionArray = new String[Engine.ROUND_COUNT][2];
         for (int i = 0; i < progressionArray.length; i++) {
-            int random1 = Utils.randomInt();
-            int random2 = Utils.randomInt();
+            int random1 = Utils.generateRandomInt(Utils.RANGE);
+            int random2 = Utils.generateRandomInt(Utils.RANGE);
             int[] progression = createProgression(random1, random2);
-            int randomNumber = 0 + (int) (Math.random() * PROGRESSIONLENGTH);
+            int randomNumber = 0 + (int) (Math.random() * PROGRESSION_LENGTH);
             int x = progression[randomNumber];
             var result = new StringBuilder();
             for (int num : progression) {
@@ -34,9 +34,9 @@ public class Progression {
         return progressionArray;
     }
     public static int[] createProgression(int a1, int d) {
-        int[] array = new int[PROGRESSIONLENGTH];
+        int[] array = new int[PROGRESSION_LENGTH];
         array[0] = a1;
-        for (int i = 2; i < PROGRESSIONLENGTH + 1; i++) {
+        for (int i = 2; i < PROGRESSION_LENGTH + 1; i++) {
             array[i - 1] = a1 + d * (i - 1);
         }
         return array;

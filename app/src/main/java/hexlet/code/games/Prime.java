@@ -4,29 +4,20 @@ import hexlet.code.Utils;
 
 public class Prime {
 
-    private static String primeRule = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
-    public static void primeGame() {
-        Engine.runGame(createPrimeArray(), primeRule);
+    public static final String PRIME_RULE = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
+    public static void startPrimeGame() {
+        Engine.runGame(createPrimeArray(), PRIME_RULE);
     }
     public static String[][] createPrimeArray() {
-        String[][] primeArray = new String[Engine.TRYCOUNT][2];
+        String[][] primeArray = new String[Engine.ROUND_COUNT][2];
         for (int i = 0; i < primeArray.length; i++) {
-            int random = Utils.randomInt();
+            int random = Utils.generateRandomInt(Utils.RANGE);
             primeArray[i][0] = String.valueOf(random);
-            primeArray[i][1] = primeCheck(random);
+            primeArray[i][1] = isPrime(random) ? "yes" : "no";
         }
         return primeArray;
     }
-
-    public static String primeCheck(int number) {
-        if (isSimple(number)) {
-            return "yes";
-        } else {
-            return "no";
-        }
-    }
-
-    public static boolean isSimple(int number) {
+    public static boolean isPrime(int number) {
         if (number < 2) {
             return false;
         }
