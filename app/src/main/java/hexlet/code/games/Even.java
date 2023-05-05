@@ -5,16 +5,16 @@ import hexlet.code.Utils;
 public class Even {
     public static final String EVEN_RULE = "Answer 'yes' if the number is even, otherwise answer 'no'.";
     public static void startEvenGame() {
-        Engine.runGame(createEvenArray(), EVEN_RULE);
-    }
-    public static String[][] createEvenArray() {
-        String[][] evenArray = new String[Engine.ROUND_COUNT][2];
+        String[][] evenArray = new String[Engine.ROUND_COUNT][];
         for (int i = 0; i < evenArray.length; i++) {
-            int random = Utils.generateRandomInt(Utils.RANGE);
-            evenArray[i][0] = String.valueOf(random);
-            evenArray[i][1] = isEven(random) ? "yes" : "no";
+            evenArray[i] = generateRoundData();
         }
-        return evenArray;
+        Engine.runGame(evenArray, EVEN_RULE);
+    }
+    public static String[] generateRoundData() {
+        int random = Utils.generateRandomInt(Utils.RANGE);
+        String[] roundArray = new String[]{String.valueOf(random), isEven(random) ? "yes" : "no"};
+        return roundArray;
     }
     public static boolean isEven(int a) {
         return (a % 2 == 0);

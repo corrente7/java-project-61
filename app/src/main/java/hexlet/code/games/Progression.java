@@ -8,30 +8,30 @@ public class Progression {
     public static final String PROGRESSION_RULE = "What number is missing in the progression?";
     private static final int PROGRESSION_LENGTH = 10;
     public static void startProgressionGame() {
-        Engine.runGame(createProgressionArray(), PROGRESSION_RULE);
-    }
-    public static String[][] createProgressionArray() {
-        String[][] progressionArray = new String[Engine.ROUND_COUNT][2];
+        String[][] progressionArray = new String[Engine.ROUND_COUNT][];
         for (int i = 0; i < progressionArray.length; i++) {
-            int random1 = Utils.generateRandomInt(Utils.RANGE);
-            int random2 = Utils.generateRandomInt(Utils.RANGE);
-            int[] progression = createProgression(random1, random2);
-            int randomNumber = 0 + (int) (Math.random() * PROGRESSION_LENGTH);
-            int x = progression[randomNumber];
-            var result = new StringBuilder();
-            for (int num : progression) {
-                if (num == x) {
-                    result.append(".. ");
-                } else {
-                    result.append(Integer.toString(num));
-                    result.append(" ");
-                }
-            }
-            String str = result.toString();
-            progressionArray[i][0] = str;
-            progressionArray[i][1] = String.valueOf(x);
+            progressionArray[i] = generateRoundData();
         }
-        return progressionArray;
+        Engine.runGame(progressionArray, PROGRESSION_RULE);
+    }
+    public static String[] generateRoundData() {
+        int random1 = Utils.generateRandomInt(Utils.RANGE);
+        int random2 = Utils.generateRandomInt(Utils.RANGE);
+        int[] progression = createProgression(random1, random2);
+        int randomNumber = 0 + (int) (Math.random() * PROGRESSION_LENGTH);
+        int x = progression[randomNumber];
+        var result = new StringBuilder();
+        for (int num : progression) {
+            if (num == x) {
+                result.append(".. ");
+            } else {
+                result.append(Integer.toString(num));
+                result.append(" ");
+            }
+        }
+        String str = result.toString();
+        String[] roundArray = new String[]{str, String.valueOf(x)};
+        return roundArray;
     }
     public static int[] createProgression(int a1, int d) {
         int[] array = new int[PROGRESSION_LENGTH];

@@ -40,7 +40,7 @@ public class App {
                 Calc.startCalcGame();
                 break;
             case GSD:
-                GCD.startGsdGame();
+                GCD.startGcdGame();
                 break;
             case PROGRESSION:
                 Progression.startProgressionGame();

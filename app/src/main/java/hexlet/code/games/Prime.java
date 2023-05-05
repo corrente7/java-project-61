@@ -6,16 +6,16 @@ public class Prime {
 
     public static final String PRIME_RULE = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
     public static void startPrimeGame() {
-        Engine.runGame(createPrimeArray(), PRIME_RULE);
-    }
-    public static String[][] createPrimeArray() {
-        String[][] primeArray = new String[Engine.ROUND_COUNT][2];
+        String[][] primeArray = new String[Engine.ROUND_COUNT][];
         for (int i = 0; i < primeArray.length; i++) {
-            int random = Utils.generateRandomInt(Utils.RANGE);
-            primeArray[i][0] = String.valueOf(random);
-            primeArray[i][1] = isPrime(random) ? "yes" : "no";
+            primeArray[i] = generateRoundData();
         }
-        return primeArray;
+        Engine.runGame(primeArray, PRIME_RULE);
+    }
+    public static String[] generateRoundData() {
+        int random = Utils.generateRandomInt(Utils.RANGE);
+        String[] roundArray = new String[]{String.valueOf(random), isPrime(random) ? "yes" : "no"};
+        return roundArray;
     }
     public static boolean isPrime(int number) {
         if (number < 2) {
