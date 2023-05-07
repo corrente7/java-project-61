@@ -5,6 +5,7 @@ import hexlet.code.Utils;
 public class Prime {
 
     public static final String PRIME_RULE = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
+
     public static void startPrimeGame() {
         String[][] primeArray = new String[Engine.ROUND_COUNT][];
         for (int i = 0; i < primeArray.length; i++) {
@@ -12,12 +13,14 @@ public class Prime {
         }
         Engine.runGame(primeArray, PRIME_RULE);
     }
-    public static String[] generateRoundData() {
+
+    private static String[] generateRoundData() {
         int random = Utils.generateRandomInt(Utils.RANGE);
         String[] roundArray = new String[]{String.valueOf(random), isPrime(random) ? "yes" : "no"};
         return roundArray;
     }
-    public static boolean isPrime(int number) {
+
+    private static boolean isPrime(int number) {
         if (number < 2) {
             return false;
         }

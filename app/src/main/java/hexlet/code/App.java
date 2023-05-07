@@ -8,6 +8,7 @@ import java.util.Scanner;
 
 
 public class App {
+
     private static final int EXIT = 0;
     private static final int GREET = 1;
     private static final int EVEN = 2;
@@ -15,6 +16,7 @@ public class App {
     private static final int GSD = 4;
     private static final int PROGRESSION = 5;
     private static final int PRIME = 6;
+
     public static void main(String[] args) {
         System.out.println("Please enter the game number and press Enter.");
         System.out.println("1 - Greet");

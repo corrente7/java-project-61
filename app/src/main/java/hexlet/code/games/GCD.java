@@ -13,13 +13,15 @@ public class GCD {
         }
         Engine.runGame(gcdArray, GCD_RULE);
     }
-    public static String[] generateRoundData() {
+
+    private static String[] generateRoundData() {
         int random1 = Utils.generateRandomInt(Utils.RANGE);
         int random2 = Utils.generateRandomInt(Utils.RANGE);
         String[] roundArray = new String[]{random1 + " " + random2, String.valueOf(findGCD(random1, random2))};
         return roundArray;
     }
-    public static int findGCD(int x, int y) {
+
+    private static int findGCD(int x, int y) {
         while (x != 0 && y != 0) {
             if (x > y) {
                 x = x % y;
