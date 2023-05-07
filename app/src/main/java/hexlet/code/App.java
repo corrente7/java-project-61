@@ -6,7 +6,6 @@ import hexlet.code.games.Prime;
 import hexlet.code.games.Progression;
 import java.util.Scanner;
 
-
 public class App {
 
     private static final int EXIT = 0;
