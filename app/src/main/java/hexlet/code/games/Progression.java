@@ -30,6 +30,7 @@ public class Progression {
                 result = result.join(" ", result, Integer.toString(num));
             }
         }
+        result.trim();
         String[] roundArray = new String[]{result, String.valueOf(hiddenNumber)};
         return roundArray;
 
