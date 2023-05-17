@@ -5,14 +5,14 @@ public class Engine {
 
     public static final int ROUND_COUNT = 3;
 
-    public static void runGame(String[][] gameArray, String rules) {
+    public static void runGame(String[][] questions, String rules) {
         System.out.println("Welcome to the Brain Games!");
         Scanner scan = new Scanner(System.in);
         System.out.println("May I have your name? ");
         String name = scan.nextLine();
         System.out.println("Hello, " + name + "!");
         System.out.println(rules);
-        for (String[] row : gameArray) {
+        for (String[] row : questions) {
             String question = row[0];
             String rightAnswer = row[1];
             System.out.println("Question: " + question);

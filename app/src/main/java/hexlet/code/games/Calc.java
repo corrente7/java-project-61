@@ -34,7 +34,7 @@ public class Calc {
             case '*':
                 return number1 * number2;
             default:
-                return 0;
+                throw new Error("Unknown operation!");
         }
     }
 
